@@ -1,0 +1,21 @@
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: rgb(187, 187, 187);
+}
+
+.Navbar {
+  background-color: pink;
+  padding: 5px;
+}
