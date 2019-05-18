@@ -5,9 +5,9 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <span> Login Here </span> <br />
+        <span> <Link to='/profile'> <strong> {`-> Login Here <-`} </strong> </Link> </span> <br />
         Need an account? <br />
-        <Link to='/register'> <strong> {`-> Register Here <-`} </strong> </Link>
+        <span> <Link to='/register'> <strong> {`-> Register Here <-`} </strong> </Link> </span>
       </div>
     )
   }

@@ -1,3 +1,16 @@
+
+
+/* .Navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+} */
+
+.logo {
+  height: 10vh;
+}
+
 ul {
   list-style: none;
   display: flex;
@@ -13,9 +26,11 @@ a {
 a:hover {
   text-decoration: underline;
   color: rgb(187, 187, 187);
+  cursor: pointer;
 }
 
 .Navbar {
-  background-color: pink;
+  background-color: lightskyblue;
   padding: 5px;
+  position: relative;
 }

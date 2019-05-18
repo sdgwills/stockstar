@@ -1,0 +1,61 @@
+.News {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-items {
+  padding: 10px, 10px, 0px, 10px;
+  width: 65vw;
+  margin-top: 50px;
+}
+
+.loading-container {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  height: 10%;
+  width: 70%;
+}
+
+.card-img {
+  height: 130px;
+  width: 230px;
+  padding: 0px 20px 0px 0px;
+}
+
+.card-info {
+  text-align: left;
+  display: flex;
+  align-content: center;
+  flex-direction: column
+}
+
+.card-title {
+  color: #1274ed;
+  font-size: 1.25rem;
+}
+
+.card-text {
+
+}

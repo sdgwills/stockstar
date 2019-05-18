@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import logo from './my_logo.png'
 
 export default class Navbar extends Component {
   render() {
     return (
       <div className='Navbar'>
         <nav>
-          <span> <h3> Please kill me  </h3> </span>
           <ul>
+            <div className='company-logo'>
+              <img className='logo' src={logo} />
+            </div>
+
             <li>
               <Link to='/'> Home </Link>
             </li>
+
             <li>
               <Link to='/chart'> Chart </Link>
             </li>
+
             <li>
               <Link to='/users'> Users </Link>
             </li>
+
             <li>
-              <Link to='/login'> Login </Link>
+              <a onClick={this.props.auth.login}> Login </a>
             </li>
             
           </ul>

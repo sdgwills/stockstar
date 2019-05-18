@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Home from './Components/Home';
+import Home from './Components/Home/Home';
 import Chart from './Components/Chart/Chart';
 import Users from './Components/Users';
 import Login from './Components/Login';
