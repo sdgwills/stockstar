@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Auth from '../Auth';
-import loading from '../Components/Home/News/output.gif';
+import Auth from '../../Auth';
+// import loading_gif from './output.gif';[]
+import './Callback.css'
 
 export default class Callback extends Component {
 
@@ -11,8 +12,8 @@ export default class Callback extends Component {
 
   render() {
     return(
-      <div>
-        {loading}
+      <div className='Callback'>
+        {/* <img className='loading-gif' src={loading_gif} alt='loading' /> */}
       </div>
     )
   }

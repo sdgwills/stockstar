@@ -5,6 +5,8 @@ import loading_gif from './output.gif';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { changeTicker } from '../../../redux/store';
+import Card from './Card';
+
 
 class News extends Component {
   constructor(props) {
@@ -14,6 +16,8 @@ class News extends Component {
       news: {}
     }
   }
+
+  
 
   async componentDidMount() {
     await axios.get(`https://stocknewsapi.com/api/v1?tickers=${this.props.ticker}&items=30&fallback=true&token=obdl1wjpt90vypk7x6uwpexcbcayi2cep7nzox7r`).then( results => {
@@ -49,8 +53,11 @@ class News extends Component {
   handleFocus = (event) => event.target.select();
 
   render() {
+
+
     return (
       <div className='News'>
+        <Card />
         <div className='news-items'>
           <div className='card-box'>
             {this.state.news.data ?

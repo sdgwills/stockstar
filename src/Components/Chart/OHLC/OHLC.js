@@ -130,14 +130,17 @@ class OHLC extends Component {
         
         <div className='chart'>
             {this.state.candles[0] ?
-              <div>
+              <div className='ohlc-chart-container'>
                 <Chart
+                  className='ohlc-chart'
                   width={'80vw'}
                   height={'80vh'}
                   chartType="CandlestickChart"
+                  
                   loader={<img className='loading-gif' src={loading_gif} alt='loading' />}
                   data={this.state.candles}
                   options={{
+                    backgroundColor: 'transparent',
                     legend: 'none',
                     colors: ["black"],
                     candlestick: {

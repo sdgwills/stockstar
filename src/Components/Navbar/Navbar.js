@@ -9,9 +9,8 @@ export default class Navbar extends Component {
       <div className='Navbar'>
         <nav>
           <ul>
-            <div className='company-logo'>
-              <img className='logo' src={logo} />
-            </div>
+            {/* <div className='company-logo'>
+            </div> */}
 
             <li>
               <Link to='/'> Home </Link>
@@ -20,10 +19,10 @@ export default class Navbar extends Component {
             <li>
               <Link to='/chart'> Chart </Link>
             </li>
-
+{/* 
             <li>
               <Link to='/users'> Users </Link>
-            </li>
+            </li> */}
 
             <li>
               <a onClick={this.props.auth.login}> Login </a>
