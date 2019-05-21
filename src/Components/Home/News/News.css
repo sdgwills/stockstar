@@ -1,13 +1,22 @@
+body {
+  overflow: hidden;
+}
+
 .News {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .news-items {
   padding: 10px, 10px, 0px, 10px;
-  width: 65vw;
+  width: 100%;
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loading-container {
@@ -24,7 +33,21 @@
   align-items: center;
 }
 
+.all-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 .card-box {
+  overflow-y: scroll;
+}
+
+.watch-list {
+  width: 25%;
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,12 +56,20 @@
 .card {
   display: flex;
   flex-direction: row;
-  align-content: center;
-  height: 10%;
-  width: 70%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* align-content: center; */
+  width: 1275px;
+  height: 815px;
 }
 
-.card-img {
+.card-box::-webkit-scrollbar { width: 0 !important }
+
+.ticker-input {
+  text-transform: uppercase;
+}
+
+/* .card-img {
   height: 130px;
   width: 230px;
   padding: 0px 20px 0px 0px;
@@ -58,4 +89,4 @@
 
 .card-text {
 
-}
+} */

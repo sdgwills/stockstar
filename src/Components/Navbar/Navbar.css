@@ -7,15 +7,15 @@
   flex-direction: row;
 } */
 
-.logo {
-  height: 10vh;
-}
-
 ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+li {
+  font-size: 20px;
 }
 
 a {

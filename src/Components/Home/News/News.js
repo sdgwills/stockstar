@@ -6,14 +6,36 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { changeTicker } from '../../../redux/store';
 import Card from './Card';
+import Input from '@material-ui/core/Input';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import WatchlistTable from './Table';
 
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  margin: {
+    margin: theme.spacing.unit,
+  },
+  textField: {
+    flexBasis: 200,
+  },
+});
 
 class News extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      news: {}
+      news: []
     }
   }
 
@@ -24,15 +46,13 @@ class News extends Component {
       this.setState({
         news: results.data
       })
-      console.log(this.state.news);
     })
   }
   
   handleKeyPress = async (event) => {
     if(event.key === "Enter") {
       this.setState({
-        candles: [],
-        date: []
+        news: []
       })
 
       await this.props.changeTicker(event.target.value);
@@ -57,27 +77,34 @@ class News extends Component {
 
     return (
       <div className='News'>
-        <Card />
         <div className='news-items'>
-          <div className='card-box'>
-            {this.state.news.data ?
-              <div className="card">
-                  <a href={this.state.news.data[0].news_url} target="_blank"  >
-                    <img className='card-img' src={this.state.news.data[0].image_url} />
-                  </a>
-                <div className='card-info'>
-                  <a className='card-title' target="_blank"  href={this.state.news.data[0].news_url} > {this.state.news.data[0].title} </a> <br/>
-                  <span className='card-text'> {this.state.news.data[0].text} </span>
+          <div class='all-container'>
+            <div className='card-box'>
+              {this.state.news.data ?
+                <div className="card">
+                  {this.state.news.data.map(news_card => {
+                    return <Card
+                      key={news_card.date} 
+                      news_card={news_card}
+                    />
+                  })}
                 </div>
-              </div>
-              :
-              <div className='loading-container'>
-                <img className='loading-gif' src={loading_gif} />
-              </div>
-            }
+                :
+                <div className='loading-container'>
+                  <img className='loading-gif' src={loading_gif} />
+                </div>
+              }
+              
+            </div>
+            <div class='watch-list'>
+                <div className='ticker-search'>
+
+                  <TextField class='ticker-input' name='ticker-input' onKeyPress={this.handleKeyPress} value={this.props.ticker} onChange={this.handleChange} onFocus={this.handleFocus} onClick={this.handleFocus}/> <button> Add To Watchlist </button>
+                  <WatchlistTable />
+                </div>
+            </div>
           </div>
         </div>
-        <input class='ticker-input' placeholder='Symbol or Ticker' name='ticker-input' onKeyPress={this.handleKeyPress} value={this.props.ticker} onChange={this.handleChange} onFocus={this.handleFocus} onClick={this.handleFocus}/>
       </div>
     )
   }

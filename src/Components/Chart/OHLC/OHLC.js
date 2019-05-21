@@ -67,7 +67,8 @@ class OHLC extends Component {
       this.setState({
         candles: [],
         date: []
-      })
+      })  
+
 
       await this.props.changeTicker(event.target.value);
 

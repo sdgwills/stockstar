@@ -8,45 +8,63 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { hidden } from 'ansi-colors';
+// import loading_gif from '../News/output.gif';
 
 const styles = {
   card: {
-    maxWidth: 345,
+    maxWidth: 400,
+    margin: 10,
+    
   },
   media: {
-    height: 140,
+    height: 225,
+    width: 400
   },
 };
 
 function MediaCard(props) {
   const { classes } = props;
   return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image=""
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+    
+      
+<div>
+  {props.news_card ?
+      <Card className={classes.card}>
+        
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={props.news_card.image_url}
+            title=""
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h7" component="h2">
+              {props.news_card.title}
+            </Typography>
+            <Typography component="p">
+              {props.news_card.text}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        {/* <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </CardActions> */}
+        
+      
+      </Card>
+    
+        :
+        <div className='loading-container'>
+          nope
+        </div>
+      }
+    </div>
   );
 }
 
