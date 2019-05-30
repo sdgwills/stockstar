@@ -10,7 +10,7 @@ export default class theChart extends Component {
     super()
 
     this.state = {
-      watchlist: null
+      watchlist: []
     }
   }
 

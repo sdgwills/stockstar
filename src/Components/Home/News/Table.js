@@ -42,7 +42,7 @@ class WatchlistTable extends Component {
     console.log(ticker, id);
     
     axios.put(`/api/update`, {ticker, id}).then(res => {
-      // console.log('I ran bitch');
+
     }).catch(err => {
       console.log('BERROR', err);
     })
@@ -78,7 +78,7 @@ class WatchlistTable extends Component {
   
   let rows = [];
 
-  
+  console.log(this.props.watchlist);
   (this.props.watchlist ? 
     rows = this.props.watchlist.map(row => {
       return createData(row.id, row.ticker)

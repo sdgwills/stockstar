@@ -5,11 +5,8 @@ const session = require('express-session');
 const ctrl = require('./controller');
 const app = express();
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
-const path = require('path'); // Usually moved to the start of file
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+
 app.use(express.json());
 app.use(session({
   secret: SESSION_SECRET,
