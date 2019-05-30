@@ -30,7 +30,7 @@ function MediaCard(props) {
       
 <div>
   {props.news_card ?
-      <Card className={classes.card}>
+      <a target='_blank' href={props.news_card.news_url}><Card className={classes.card}>
         
         <CardActionArea>
           <CardMedia
@@ -45,6 +45,12 @@ function MediaCard(props) {
             <Typography component="p">
               {props.news_card.text}
             </Typography>
+            <Typography component="br">
+                
+            </Typography>
+            <Typography component="p">
+              {props.news_card.sentiment}
+            </Typography>
           </CardContent>
         </CardActionArea>
         {/* <CardActions>
@@ -57,7 +63,7 @@ function MediaCard(props) {
         </CardActions> */}
         
       
-      </Card>
+      </Card> </a>
     
         :
         <div className='loading-container'>

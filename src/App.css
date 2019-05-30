@@ -8,5 +8,5 @@ body {
   margin: 10px auto;
   background-image: url('https://i0.wp.com/lilar.com/wp-content/uploads/2016/10/Savin-NY-Website-Background-Web.jpg?ssl=1');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }

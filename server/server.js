@@ -16,6 +16,13 @@ app.use(session({
   }
 }));
 
+app.get('/api/watchlist/:user_id', ctrl.readWatchlist);
+app.get('/api/stocks', ctrl.readStocks);
+app.post('/api/user', ctrl.createUser);
+app.post('/api/stock', ctrl.createStock);
+app.put('/api/update/', ctrl.updateWatchlist);
+app.delete('/api/delete/:id', ctrl.delete);
+
 massive(CONNECTION_STRING).then(dbInstance => {
   app.set('db', dbInstance);
   console.log('db set');

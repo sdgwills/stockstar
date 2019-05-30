@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -7,6 +7,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import axios from 'axios';
+import EditWatchlist from './EditWatchlist';
 
 const styles = theme => ({
   root: {
@@ -19,22 +21,73 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
-function createData(ticker) {
-  id += 1;
+
+function createData(id, ticker) {
   return { id, ticker };
 }
 
-const rows = [
-  createData('FB'),
-  createData('APPL'),
-  createData('AMZN'),
-  createData('NFLX'),
-  createData('GOOGL'),
-];
 
-function WatchlistTable(props) {
-  const { classes } = props;
+
+class WatchlistTable extends Component {
+
+  constructor() {
+    super()
+
+    this.state = {
+      edit: false
+    }
+  }
+
+  updateTicker = (ticker, id) => {
+    console.log(ticker, id);
+    
+    axios.put(`/api/update`, {ticker, id}).then(res => {
+      // console.log('I ran bitch');
+    }).catch(err => {
+      console.log('BERROR', err);
+    })
+  }
+
+  deleteRow = (e) => {
+
+    axios.delete(`/api/delete/${e}`).then(res => {
+      console.log('deleted');
+      console.log(e)
+    }).catch(console.log)
+
+  }
+
+  toggleEdit = () => {
+    // console.log('fuck')
+    this.setState({
+      edit: !this.state.edit
+    })
+  }
+
+  handleChange = e => {
+    let { value, name } = e.target
+    this.setState({
+      [name]: value
+    })
+  }
+
+  render(){
+
+  
+  const { classes } = this.props;
+  
+  let rows = [];
+
+  
+  (this.props.watchlist ? 
+    rows = this.props.watchlist.map(row => {
+      return createData(row.id, row.ticker)
+    })
+    :
+    rows = [
+      
+    ]
+  )
 
   return (
     <Paper className={classes.root}>
@@ -42,18 +95,29 @@ function WatchlistTable(props) {
         <TableHead>
           <TableRow>
             <TableCell align='center'>Watchlist</TableCell>
+            <TableCell align='center'> </TableCell>
+            <TableCell align='center'> </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => (
             <TableRow key={row.id}>
-              <TableCell align="center">{row.ticker}</TableCell>
+              <TableCell align="center">
+                { this.state.edit === false ?
+                  row.ticker
+                  :
+                  <EditWatchlist toggleEdit={this.toggleEdit} updateTicker={this.updateTicker} ticker={row.ticker} id={row.id}/>
+                }
+              </TableCell> 
+              <TableCell align="center"> <button onClick={() => this.toggleEdit()}>Edit</button> </TableCell> 
+              <TableCell align="center"> <button onClick={() => this.deleteRow(row.id)}>Delete</button> </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </Paper>
   );
+}
 }
 
 WatchlistTable.propTypes = {

@@ -42,7 +42,7 @@ class News extends Component {
   
 
   async componentDidMount() {
-    await axios.get(`https://stocknewsapi.com/api/v1?tickers=${this.props.ticker}&items=30&fallback=true&token=obdl1wjpt90vypk7x6uwpexcbcayi2cep7nzox7r`).then( results => {
+    await axios.get(`https://stocknewsapi.com/api/v1?tickers=${this.props.ticker}&items=18&fallback=true&token=obdl1wjpt90vypk7x6uwpexcbcayi2cep7nzox7r`).then( results => {
       this.setState({
         news: results.data
       })
@@ -57,7 +57,7 @@ class News extends Component {
 
       await this.props.changeTicker(event.target.value);
 
-      await axios.get(`https://stocknewsapi.com/api/v1?tickers=${this.props.ticker}&items=30&fallback=true&token=obdl1wjpt90vypk7x6uwpexcbcayi2cep7nzox7r`).then( results => {
+      await axios.get(`https://stocknewsapi.com/api/v1?tickers=${this.props.ticker}&items=18&fallback=true&token=obdl1wjpt90vypk7x6uwpexcbcayi2cep7nzox7r`).then( results => {
         this.setState({
           news: results.data
         })
@@ -78,10 +78,13 @@ class News extends Component {
     return (
       <div className='News'>
         <div className='news-items'>
+
           <div class='all-container'>
             <div className='card-box'>
+            <h1>{this.props.ticker} News</h1>
               {this.state.news.data ?
                 <div className="card">
+                  
                   {this.state.news.data.map(news_card => {
                     return <Card
                       key={news_card.date} 
@@ -98,8 +101,7 @@ class News extends Component {
             </div>
             <div class='watch-list'>
                 <div className='ticker-search'>
-
-                  <TextField class='ticker-input' name='ticker-input' onKeyPress={this.handleKeyPress} value={this.props.ticker} onChange={this.handleChange} onFocus={this.handleFocus} onClick={this.handleFocus}/> <button> Add To Watchlist </button>
+                  <div className='textandbutton'><TextField class='ticker-input' name='ticker-input' onKeyPress={this.handleKeyPress} value={this.props.ticker} onChange={this.handleChange} onFocus={this.handleFocus} onClick={this.handleFocus}/> <button className='add-button'> Add To Watchlist </button> </div>
                   <WatchlistTable />
                 </div>
             </div>

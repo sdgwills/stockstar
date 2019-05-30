@@ -15,9 +15,7 @@ import './App.css';
 
 const auth = new Auth();
 
-
 function App() {
-  console.log(auth.getProfile());
   return (
 
     <div className='App'>

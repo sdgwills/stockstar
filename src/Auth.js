@@ -10,7 +10,7 @@ export default class Auth {
       // the following three lines MUST be updated
       domain: 'sdgwills.auth0.com',
       audience: 'https://sdgwills.auth0.com/userinfo',
-      clientID: 'cI0I38t3WL62fhZ2237tclgOBySRVdux',
+      clientID: 'Qo8INVVEQIKv2HRfzLczIp2m9RtFAu9A',
       redirectUri: 'http://localhost:3000/callback',
       responseType: 'token id_token',
       scope: 'openid profile'

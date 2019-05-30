@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
 let initialState = {
-  ticker: 'TSLA'
+  ticker: 'GOOGL'
 }
 
 const CHANGE_TICKER = 'CHANGE_TICKER';
@@ -18,10 +18,9 @@ function reducer(state = initialState, action) {
     case CHANGE_TICKER:
       return {...state, ticker: action.payload}
       
-
     default:
       return state
   }
 }
 
-export default createStore(reducer)
+export default createStore(reducer);

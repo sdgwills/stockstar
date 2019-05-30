@@ -6,6 +6,8 @@ import loading_gif from './output.gif';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { changeTicker } from '../../../redux/store';
+import WatchlistTable from '../../../Components/Home/News/Table';
+import TextField from '@material-ui/core/TextField';
 
 class OHLC extends Component {
   constructor(props) {
@@ -60,6 +62,7 @@ class OHLC extends Component {
         candles: splicedCandleArr
       })
     })
+
   }
 
   handleKeyPress = async (event) => {
@@ -67,8 +70,7 @@ class OHLC extends Component {
       this.setState({
         candles: [],
         date: []
-      })  
-
+      })
 
       await this.props.changeTicker(event.target.value);
 
@@ -125,11 +127,22 @@ class OHLC extends Component {
 
   handleFocus = (event) => event.target.select();
 
+  handleClick = () => {
+    let ticker = this.props.ticker
+    axios.post('/api/stock', {ticker}).then(res => {
+      
+    })
+  }
+
+  
+
   render() {
+
     return (
       <div className='body'>
         
         <div className='chart'>
+        
             {this.state.candles[0] ?
               <div className='ohlc-chart-container'>
                 <Chart
@@ -157,7 +170,12 @@ class OHLC extends Component {
               </div>
             }
         </div>
-        <input class='ticker-input' placeholder='Symbol or Ticker' name='ticker-input' onKeyPress={this.handleKeyPress} value={this.props.ticker} onChange={this.handleChange} onFocus={this.handleFocus} onClick={this.handleFocus}/>
+        <div className='chart-and-table'>
+        <h3> Active Chart: {this.props.ticker}</h3>
+        <div className='textandbutton'><TextField class='ticker-input' name='ticker-input' onKeyPress={this.handleKeyPress} value={this.props.ticker} onChange={this.handleChange} onFocus={this.handleFocus} onClick={this.handleFocus}/>
+        <button onClick={this.handleClick} className='add-button'> Add To Watchlist </button> </div>
+          <WatchlistTable {...this.props}/>
+        </div>
       </div>
     )
   }
